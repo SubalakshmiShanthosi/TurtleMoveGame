@@ -35,4 +35,19 @@ public class IOUtils {
         }
      return new Grid(gridSize, result);
  }
+public static Turtle initializeTurtleOrientation(final File file,Grid grid) throws FileNotFoundException, IOException
+{
+    String st;
+        if (file == null || !file.canRead()) {
+            System.out.println(file.canRead());
+            throw new IllegalArgumentException("file not readable: " + file);
+        }
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String currentDirection=br.readLine().trim();
+        String[] coordinates = null;
+        while((st = br.readLine()) != null){
+             coordinates = st.trim().split(",");
+        }
+    return new Turtle(currentDirection.charAt(0),grid.getCellForPosition(new Position(coordinates[0],coordinates[1])));
+}
 }
