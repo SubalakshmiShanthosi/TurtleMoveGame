@@ -54,5 +54,8 @@ public class IOUtilsTest {
     Grid grid=IOUtils.initializeGrid(new File("GridInitiation.txt"));
     Cell returnedInstance=grid.getCellForPosition(new Position(1,7));
     Assert.assertEquals("Grid initiation failed",returnedInstance.isIsObstacle(),true);
+    Cell returnedInstanceTwo=grid.getCellForPosition(new Position(2,3));
+    Assert.assertEquals("Grid initiation failed",returnedInstanceTwo.isIsObstacle(),false);
+    
      }
 }

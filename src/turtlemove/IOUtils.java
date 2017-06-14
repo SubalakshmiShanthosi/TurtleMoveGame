@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package turtlemove;
 
 import java.io.BufferedReader;
@@ -50,22 +46,4 @@ public class IOUtils {
  
      return new Grid(gridSize, result);
  }
-    /*public static GameHelper initializeGameHelper() throws FileNotFoundException, IOException
-    {
-        return new GameHelper(IOUtils.initializeGrid(new File("GridInitiation.txt")),new Turtle());
-    }
-    /*
-    public static String initializeCommandForGame(final File file)throws FileNotFoundException,IOException,NullPointerException
-    {
-       String command;
-       if (file == null ) {
-            throw new IllegalArgumentException("file not readable: " + file);
-        }
-        
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        command=br.readLine();
-        br.close();
-        return command.toUpperCase();
-    }
-    * */
 }

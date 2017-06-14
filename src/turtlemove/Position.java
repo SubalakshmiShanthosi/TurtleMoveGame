@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package turtlemove;
 
 import java.util.Objects;
@@ -30,7 +26,7 @@ public class Position {
    }
     @Override
     public String toString() {
-        return "Position{" + "xCoord=" + xCoordinate + ", yCoord=" + yCoordinate + '}';
+        return  xCoordinate +","+yCoordinate;
     }
 
     public Integer getxCoordinate() {
