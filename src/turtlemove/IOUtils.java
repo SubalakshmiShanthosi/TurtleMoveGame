@@ -22,8 +22,13 @@ public class IOUtils {
         if (file == null || !file.canRead()) {
             throw new IllegalArgumentException("file not readable: " + file);
         }
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        Integer gridSize=Integer.parseInt(br.readLine().trim());
+          BufferedReader br = null;
+          Integer gridSize = null;
+        try
+        {
+        br = new BufferedReader(new FileReader(file));
+        gridSize=Integer.parseInt(br.readLine().trim());
+        
         while((st = br.readLine()) != null){
             String[] coordinates = st.trim().split(",");
             obstaclePositions.add(new Position(coordinates[0], coordinates[1]));
@@ -33,6 +38,34 @@ public class IOUtils {
                 result.add(new Cell(i,j, obstaclePositions.contains(new Position(i, j))));
             }
         }
+        }
+         catch (IOException e) {
+        e.printStackTrace();
+    }
+        finally
+        {
+         if (br != null)
+             br.close();
+        }
+ 
      return new Grid(gridSize, result);
  }
+    /*public static GameHelper initializeGameHelper() throws FileNotFoundException, IOException
+    {
+        return new GameHelper(IOUtils.initializeGrid(new File("GridInitiation.txt")),new Turtle());
+    }
+    /*
+    public static String initializeCommandForGame(final File file)throws FileNotFoundException,IOException,NullPointerException
+    {
+       String command;
+       if (file == null ) {
+            throw new IllegalArgumentException("file not readable: " + file);
+        }
+        
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        command=br.readLine();
+        br.close();
+        return command.toUpperCase();
+    }
+    * */
 }

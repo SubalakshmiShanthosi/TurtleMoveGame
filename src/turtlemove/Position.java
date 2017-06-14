@@ -23,18 +23,24 @@ public class Position {
         this.xCoordinate = xCoord;
         this.yCoordinate = yCoord;
     }
+    
+   public Position newPositionForChangeInStep(Integer newStepXCoordinate,Integer newStepYCoordinate)
+   {
+       return new Position(this.xCoordinate+newStepXCoordinate,this.yCoordinate+newStepYCoordinate);
+   }
     @Override
     public String toString() {
         return "Position{" + "xCoord=" + xCoordinate + ", yCoord=" + yCoordinate + '}';
     }
 
-    public void setxCoordinate(Integer xCoordinate) {
-        this.xCoordinate = xCoordinate;
+    public Integer getxCoordinate() {
+        return xCoordinate;
     }
 
-    public void setyCoordinate(Integer yCoordinate) {
-        this.yCoordinate = yCoordinate;
+    public Integer getyCoordinate() {
+        return yCoordinate;
     }
+
     @Override
    public boolean equals(Object obj) 
 {

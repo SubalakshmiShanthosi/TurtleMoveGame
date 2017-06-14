@@ -4,28 +4,87 @@
  * and open the template in the editor.
  */
 package turtlemove;
+
 public enum Direction {
-  E("E"),
-  W("W"),
-  N("N"),
-  S("S");
 
-  private String text;
+    N(0,1) {
+        @Override
+        public Direction left() {
+            return W;
+        }
 
-  Direction(String text) {
-    this.text = text;
-  }
+        @Override
+        public Direction right() {
+            return E;
+        }
+    },
 
-  public String getText() {
-    return this.text;
-  }
+    S(0,-1) {
+        @Override
+        public Direction right() {
+            return W;
+        }
 
-  public static Direction fromString(String text) {
-    for (Direction b : Direction.values()) {
-      if (b.text.equalsIgnoreCase(text)) {
-        return b;
-      }
+        @Override
+        public Direction left() {
+            return E;
+        }
+    },
+
+    E(1,0) {
+        @Override
+        public Direction right() {
+            return S;
+        }
+
+        @Override
+        public Direction left() {
+            return N;
+        }
+    },
+
+    W(-1,0) {
+        @Override
+        public Direction right() {
+            return N;
+        }
+
+        @Override
+        public Direction left() {
+            return S;
+        }
+    };
+
+    private Integer StepXCoordinate;
+    private Integer StepYCoordinate;
+
+    public Integer getStepXCoordinate() {
+        return StepXCoordinate;
     }
-    return null;
-  }
+
+    public Integer getStepYCoordinate() {
+        return StepYCoordinate;
+    }
+
+    Direction(Integer stepSizeOnXAxis, Integer stepSizeOnYAxis) {
+        this.StepXCoordinate = stepSizeOnXAxis;
+        this.StepYCoordinate = stepSizeOnYAxis;
+    }
+
+    public abstract Direction right();
+    public abstract Direction left();
+
+    public Integer stepSizeForXAxis() {
+        return this.StepXCoordinate;
+    }
+
+    public Integer stepSizeForYAxis() {
+        return this.StepYCoordinate;
+    }
+
+    @Override
+    public String toString() {
+        return "Direction{" + "stepSizeOnXAxis=" + StepXCoordinate + ", stepSizeOnYAxis=" + StepYCoordinate + '}';
+    }
+
 }

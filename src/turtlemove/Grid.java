@@ -17,7 +17,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 public class Grid {
- List<Cell>cells =new ArrayList<Cell>();   
+
+ List<Cell>cells =new ArrayList<Cell>();
  int gridSize;
 
     public Grid(int gridSize, List<Cell> cells) {
@@ -39,7 +40,7 @@ public class Grid {
     public int getGridSize() {
         return gridSize;
     }
-   
+ 
  public void printGrid()
  {
     for(Cell c : cells)
