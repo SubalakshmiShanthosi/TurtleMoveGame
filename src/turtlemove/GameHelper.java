@@ -12,32 +12,27 @@ import java.util.Scanner;
  */
 public class GameHelper {
 
-public  Grid gridInstance;
-public  Turtle turtleInstance;
+public  Grid grid;
+public  Turtle turtle;
 
 
  GameHelper(Grid gridIns,Turtle turtleIns)
  {
-     this.gridInstance=gridIns;
-     this.turtleInstance=turtleIns;
+     this.grid=gridIns;
+     this.turtle=turtleIns;
  }
-    public Grid getGridInstance() {
-        return gridInstance;
+    public Grid getGrid() {
+        return grid;
     }
 
-    public Turtle getTurtleInstance() {
-        return turtleInstance;
+    public Turtle getTurtle() {
+        return turtle;
     }
 
-public boolean isValidStateOfTurtle()
-{
-    return getTurtleInstance().getCurrentCell().isIsObstacle();
-}
 public void setUpGame() throws FileNotFoundException, IOException
 {
-    this.gridInstance=IOUtils.initializeGrid(new File("GridInitiation.txt"));
-    this.turtleInstance=new Turtle();
-    
+    this.grid=IOUtils.initializeGrid(new File("GridInitiation.txt"));
+    this.turtle=new Turtle();    
 }
 public void startPlaying() throws FileNotFoundException, NullPointerException, IOException
 {   
@@ -46,9 +41,9 @@ public void startPlaying() throws FileNotFoundException, NullPointerException, I
     char[] gameInput=scanner.nextLine().toCharArray();
     for(Character c:gameInput)
     {
-      if(!isValidStateOfTurtle()&& ExecuteCommand.fromString(c.toString())!=null)
+      if(ExecuteCommand.fromString(c.toString())!=null)
           
-          this.turtleInstance.executeCurrentMove(getGridInstance(),getTurtleInstance(),ExecuteCommand.fromString(c.toString()));
+          this.turtle.executeCurrentMove(getGrid(),getTurtle(),ExecuteCommand.fromString(c.toString()));
     }
     
     finishGame();
@@ -56,6 +51,6 @@ public void startPlaying() throws FileNotFoundException, NullPointerException, I
 
 public void finishGame()
 {
-   System.out.println(this.turtleInstance.currentCell.position.toString()+this.turtleInstance.d.toString());
+   System.out.println(this.turtle.currentCell.position.toString()+this.turtle.d.toString());
 }
 }

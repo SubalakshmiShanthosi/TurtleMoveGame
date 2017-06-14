@@ -36,12 +36,4 @@ public class Grid {
     public int getGridSize() {
         return gridSize;
     }
- 
- public void printGrid()
- {
-    for(Cell c : cells)
-    {
-        System.out.println(c.toString());
-    }
- }
 }

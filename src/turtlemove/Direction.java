@@ -3,7 +3,7 @@ package turtlemove;
 
 public enum Direction {
 
-    N(0,1) {
+    N(0,1,"N") {
         @Override
         public Direction left() {
             return W;
@@ -15,7 +15,7 @@ public enum Direction {
         }
     },
 
-    S(0,-1) {
+    S(0,-1,"S") {
         @Override
         public Direction right() {
             return W;
@@ -27,7 +27,7 @@ public enum Direction {
         }
     },
 
-    E(1,0) {
+    E(1,0,"E") {
         @Override
         public Direction right() {
             return S;
@@ -39,7 +39,7 @@ public enum Direction {
         }
     },
 
-    W(-1,0) {
+    W(-1,0,"W") {
         @Override
         public Direction right() {
             return N;
@@ -53,7 +53,7 @@ public enum Direction {
 
     private Integer StepXCoordinate;
     private Integer StepYCoordinate;
-
+    private String text;
     public Integer getStepXCoordinate() {
         return StepXCoordinate;
     }
@@ -62,9 +62,10 @@ public enum Direction {
         return StepYCoordinate;
     }
 
-    Direction(Integer stepSizeOnXAxis, Integer stepSizeOnYAxis) {
+    Direction(Integer stepSizeOnXAxis, Integer stepSizeOnYAxis,String text) {
         this.StepXCoordinate = stepSizeOnXAxis;
         this.StepYCoordinate = stepSizeOnYAxis;
+        this.text=text;
     }
 
     public abstract Direction right();
@@ -80,7 +81,6 @@ public enum Direction {
 
     @Override
     public String toString() {
-        return "Direction{" + "stepSizeOnXAxis=" + StepXCoordinate + ", stepSizeOnYAxis=" + StepYCoordinate + '}';
+        return text;
     }
-
 }

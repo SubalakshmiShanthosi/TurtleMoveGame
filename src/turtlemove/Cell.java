@@ -20,7 +20,7 @@ public boolean isObstacle;
         return isObstacle;
     }
    
-   Cell(int x,int y,Boolean isObstacle)
+public Cell(int x,int y,Boolean isObstacle)
    {
        this.position = new Position(x,y);
        this.isObstacle=isObstacle;

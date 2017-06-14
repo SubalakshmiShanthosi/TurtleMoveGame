@@ -5,12 +5,12 @@ public class Turtle {
    Direction d;
    Cell currentCell;
    
-   Turtle()
+  public Turtle()
    {
        this.d=Direction.N;
        this.currentCell=new Cell(1,1,false);
    }
-   Turtle(Direction d, Cell currentCell)
+   public Turtle(Direction d, Cell currentCell)
    {
        this.currentCell=currentCell;
        this.d=d;
@@ -40,15 +40,21 @@ public class Turtle {
     {
         Position position=
              turtle.getCurrentCell().getPosition().newPositionForChangeInStep(currentDirection.getStepXCoordinate(),currentDirection.getStepYCoordinate());
-             if(!grid.getCellForPosition(position).isIsObstacle())
+        Cell cell=grid.getCellForPosition(position);     
+        if(cell!=null)
              {
                 turtle.currentCell=grid.getCellForPosition(position);
              }
+       if(cell.isIsObstacle())
+       {
+           System.out.println("Hit obstacle at"+cell.toString()+"No movement ");
+       }
              
    }
 
-    public boolean isValidTurtleState()
+    public boolean isValidTurtleState(Grid grid)
     {
+        
         return currentCell.isIsObstacle();
     }
     @Override
