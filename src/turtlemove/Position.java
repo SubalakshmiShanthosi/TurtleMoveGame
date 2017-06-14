@@ -27,6 +27,14 @@ public class Position {
     public String toString() {
         return "Position{" + "xCoord=" + xCoordinate + ", yCoord=" + yCoordinate + '}';
     }
+
+    public void setxCoordinate(Integer xCoordinate) {
+        this.xCoordinate = xCoordinate;
+    }
+
+    public void setyCoordinate(Integer yCoordinate) {
+        this.yCoordinate = yCoordinate;
+    }
     @Override
    public boolean equals(Object obj) 
 {

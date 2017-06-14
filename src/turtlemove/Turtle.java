@@ -1,32 +1,26 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change thi
+ * s template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package turtlemove;
 
-/**
- *
- * @author SUBA
- */
 public class Turtle {
-   Character currentDirection;
+   Direction d;
    Cell currentCell;
-   Turtle(Character currentDirection, Cell currentCell)
+   
+   Turtle()
    {
-       this.currentDirection=currentDirection;
-       this.currentCell=currentCell;
+       this.d=Direction.N;
+       this.currentCell=new Cell(1,1,false);
    }
-
-    public Character getCurrentDirection() {
-        return currentDirection;
-    }
-
-    public void setCurrentDirection(Character currentDirection) {
-        this.currentDirection = currentDirection;
-    }
-
-    public Cell getCurrentCell() {
+   Turtle(Direction d, Cell currentCell)
+   {
+       this.currentCell=currentCell;
+       this.d=d;
+   }
+   public Cell getCurrentCell() {
         return currentCell;
     }
 
@@ -36,7 +30,7 @@ public class Turtle {
 
     @Override
     public String toString() {
-        return "Turtle{" + "currentDirection=" + currentDirection + ", currentCell=" + currentCell + '}';
+        return "Turtle{" + "currentDirection=" + d.getText() + ", currentCell=" + currentCell + '}';
     }
     
 }

@@ -18,7 +18,7 @@ import java.util.Scanner;
 public class MainDriver {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         Grid grid = IOUtils.initializeGrid(new File("GridInitiation.txt"));
-        Turtle turtle=IOUtils.initializeTurtleOrientation(new File("TurtleInitiation.txt"),grid);
-        turtle.toString();
+        
+        
     }
 }
