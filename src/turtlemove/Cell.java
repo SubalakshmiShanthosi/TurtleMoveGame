@@ -7,7 +7,7 @@ public boolean isObstacle;
 
     @Override
     public String toString() {
-        return "Cell{" + "p=" + position + ", isObstacle=" + isObstacle + '}';
+        return  "{"+ position + ", isObstacle:" + isObstacle + '}';
     }
 
     public Position getPosition() {

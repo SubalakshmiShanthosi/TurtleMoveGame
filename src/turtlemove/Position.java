@@ -24,7 +24,20 @@ public class Position {
    {
        return new Position(this.xCoordinate+newStepXCoordinate,this.yCoordinate+newStepYCoordinate);
    }
-    @Override
+    
+   public boolean hasOutsideBounds(Position position)
+   {
+       return isXCoordinateInOutsideBounds(position.xCoordinate) && isYCoordinateInOutsideBounds(position.yCoordinate);
+   }
+   
+   public boolean isXCoordinateInOutsideBounds(Integer xCoord){
+       return xCoord >= this.xCoordinate;
+   }
+   
+   public boolean isYCoordinateInOutsideBounds(Integer yCoord){
+       return yCoord >= this.yCoordinate;
+   }
+   @Override
     public String toString() {
         return  xCoordinate +","+yCoordinate;
     }

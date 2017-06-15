@@ -15,6 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import turtlemove.Cell;
+import turtlemove.Command;
 import turtlemove.Direction;
 import turtlemove.Grid;
 import turtlemove.IOUtils;
@@ -38,8 +39,8 @@ public class TurtleTest {
     }
     
     @Before
-    public void setUp() {
-    }
+    public void setUp(){
+        }
     
     @After
     public void tearDown() {
@@ -48,17 +49,29 @@ public class TurtleTest {
      @Test
      public void checkTurtleInitialConfiguration() 
      { 
-         Turtle turtleInstance;
+        Turtle turtleInstance;
         turtleInstance = new Turtle();
         Assert.assertEquals(turtleInstance.getCurrentDirection(),Direction.N);
         Assert.assertEquals(turtleInstance.getCurrentCell().toString(),new Cell(1,1,false).toString());
      }
      @Test
-     public void checkIsValidMove() throws FileNotFoundException, IOException
+     public void checkForwardMove() throws FileNotFoundException, IOException
      {
        Turtle turtle=new Turtle();
        Grid grid=IOUtils.initializeGrid(new File("GridInitiation.txt"));
-       turtle.checkAndUpdateMove(grid,turtle, Direction.N);
+       turtle.move(grid, turtle, Command.F);
        Assert.assertEquals(turtle.toString(),new Turtle(Direction.N,new Cell(1,2,false)).toString());
      }
+     @Test
+     public void checkChangeInFacingDirection()throws FileNotFoundException, IOException
+     {
+       Turtle turtle=new Turtle();
+       Grid grid=IOUtils.initializeGrid(new File("GridInitiation.txt"));
+       turtle.move(grid, turtle, Command.L);
+       Assert.assertEquals(turtle.toString(),new Turtle(Direction.W,new Cell(1,1,false)).toString());
+       turtle.move(grid, turtle, Command.R);
+       Assert.assertEquals(turtle.toString(),new Turtle(Direction.N,new Cell(1,1,false)).toString());
+     }
+     
 }
+    

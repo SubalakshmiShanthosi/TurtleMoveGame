@@ -2,55 +2,61 @@
 package turtlemove;
 
 public class Turtle {
-   Direction d;
+   Direction direction;
    Cell currentCell;
    
   public Turtle()
    {
-       this.d=Direction.N;
+       this.direction=Direction.N;
        this.currentCell=new Cell(1,1,false);
    }
    public Turtle(Direction d, Cell currentCell)
    {
        this.currentCell=currentCell;
-       this.d=d;
+       this.direction=d;
    }
 
     public Direction getCurrentDirection() {
-        return d;
+        return direction;
     }
  
     public Cell getCurrentCell() {
         return currentCell;
     }
    
-    public void executeCurrentMove(Grid grid,Turtle turtle,ExecuteCommand command)
+    public void move(Grid grid,Turtle turtle,Command command)
     {
-      if(command.compareTo(ExecuteCommand.F)==0)
+      if(command.compareTo(Command.F)==0)
       {
          checkAndUpdateMove(grid,turtle,turtle.getCurrentDirection());
       }
-      if(command.compareTo(ExecuteCommand.L)==0)
-          turtle.d=turtle.getCurrentDirection().left();
-      if(command.compareTo(ExecuteCommand.R)==0)
-          turtle.d=turtle.getCurrentDirection().right();
+      if(command.compareTo(Command.L)==0)
+          turtle.direction=turtle.getCurrentDirection().left();
+      if(command.compareTo(Command.R)==0)
+          turtle.direction=turtle.getCurrentDirection().right();
     }
     
-    public void checkAndUpdateMove(Grid grid,Turtle turtle,Direction currentDirection)
-    {
-        Position position=
-             turtle.getCurrentCell().getPosition().newPositionForChangeInStep(currentDirection.getStepXCoordinate(),currentDirection.getStepYCoordinate());
-        Cell cell=grid.getCellForPosition(position);     
+    private void checkAndUpdateMove(Grid grid,Turtle turtle,Direction currentDirection)
+    {   
+        Position position=turtle.getCurrentCell().getPosition().newPositionForChangeInStep(currentDirection.getStepXCoordinate(),currentDirection.getStepYCoordinate());
+        boolean flag=turtle.getCurrentCell().getPosition().hasOutsideBounds(position);
+        System.out.println(flag);
+        if(flag)
+        {
+            Cell cell=grid.getCellForPosition(position);     
         if(cell!=null)
              {
                 turtle.currentCell=grid.getCellForPosition(position);
              }
-       if(cell.isIsObstacle())
+        else if(cell.isIsObstacle() && cell!=null)
        {
-           System.out.println("Hit obstacle at"+cell.toString()+"No movement ");
+           System.out.println("Hit obstacle at"+cell.toString()+"No movement possible");
        }
              
    }
+        else
+            System.out.println("IIlegal move ");
+    }
 
     public boolean isValidTurtleState(Grid grid)
     {
@@ -59,7 +65,7 @@ public class Turtle {
     }
     @Override
     public String toString() {
-        return "Turtle{" + "currentDirection=" + d.toString() + ", currentCell=" + currentCell + '}';
+        return "Turtle{" + "currentDirection=" + direction.toString() + ", currentCell=" + currentCell + '}';
     }
     
 }

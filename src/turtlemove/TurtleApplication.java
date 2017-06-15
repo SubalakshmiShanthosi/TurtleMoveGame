@@ -11,13 +11,12 @@ import java.util.Scanner;
  *
  * @author SUBA
  */
-public class MainDriver {
+public class TurtleApplication {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         
         Grid grid=IOUtils.initializeGrid(new File("GridInitiation.txt"));
         Turtle turtle=new Turtle();
-        GameHelper game=new GameHelper(grid,turtle);
-        game.setUpGame();
-        game.startPlaying();
+        TurtleCommand turtleCommand=new TurtleCommand(grid,turtle);
+        turtleCommand.startPlaying();
     }
 }
