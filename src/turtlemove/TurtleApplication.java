@@ -16,7 +16,8 @@ public class TurtleApplication {
         
         Grid grid=IOUtils.initializeGrid(new File("GridInitiation.txt"));
         Turtle turtle=new Turtle();
-        TurtleCommand turtleCommand=new TurtleCommand(grid,turtle);
-        turtleCommand.startPlaying();
+        GameHelper turtleCommand=new GameHelper(grid,turtle);
+        Scanner scanner =new Scanner(System.in);
+        turtleCommand.startPlaying(scanner.nextLine().toUpperCase());
     }
 }

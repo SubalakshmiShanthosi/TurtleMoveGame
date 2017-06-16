@@ -10,13 +10,13 @@ import java.util.Scanner;
  *
  * @author SUBA
  */
-public class TurtleCommand {
+public class GameHelper {
 
 public  Grid grid;
 public  Turtle turtle;
 
 
- TurtleCommand(Grid grid,Turtle turtle)
+ public GameHelper(Grid grid,Turtle turtle)
  {
      this.grid=grid;
      this.turtle=turtle;
@@ -29,11 +29,9 @@ public  Turtle turtle;
         return turtle;
     }
 
-public void startPlaying() throws FileNotFoundException, NullPointerException, IOException
+public void startPlaying(final String inputCommand) throws  NullPointerException, IOException
 {   
-    Scanner scanner=new Scanner(System.in);
-    
-    char[] inputCommandString=scanner.nextLine().toCharArray();
+    char[] inputCommandString=inputCommand.toCharArray();
     for(Character c:inputCommandString)
     {
       if(Command.fromString(c.toString())!=null)

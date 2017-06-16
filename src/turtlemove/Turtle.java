@@ -40,11 +40,10 @@ public class Turtle {
     {   
         Position position=turtle.getCurrentCell().getPosition().newPositionForChangeInStep(currentDirection.getStepXCoordinate(),currentDirection.getStepYCoordinate());
         boolean flag=turtle.getCurrentCell().getPosition().hasOutsideBounds(position);
-        System.out.println(flag);
         if(flag)
         {
             Cell cell=grid.getCellForPosition(position);     
-        if(cell!=null)
+        if(!cell.isIsObstacle() && cell!=null)
              {
                 turtle.currentCell=grid.getCellForPosition(position);
              }
@@ -58,11 +57,6 @@ public class Turtle {
             System.out.println("IIlegal move ");
     }
 
-    public boolean isValidTurtleState(Grid grid)
-    {
-        
-        return currentCell.isIsObstacle();
-    }
     @Override
     public String toString() {
         return "Turtle{" + "currentDirection=" + direction.toString() + ", currentCell=" + currentCell + '}';
