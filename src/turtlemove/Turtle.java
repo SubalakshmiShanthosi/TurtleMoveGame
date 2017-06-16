@@ -39,8 +39,7 @@ public class Turtle {
     private void checkAndUpdateMove(Grid grid,Turtle turtle,Direction currentDirection)
     {   
         Position position=turtle.getCurrentCell().getPosition().newPositionForChangeInStep(currentDirection.getStepXCoordinate(),currentDirection.getStepYCoordinate());
-        boolean flag=turtle.getCurrentCell().getPosition().hasOutsideBounds(position);
-        if(flag)
+        if(turtle.getCurrentCell().getPosition().hasOutsideBounds(position))
         {
             Cell cell=grid.getCellForPosition(position);     
         if(!cell.isIsObstacle() && cell!=null)
@@ -56,7 +55,7 @@ public class Turtle {
         else
             System.out.println("IIlegal move ");
     }
-
+    
     @Override
     public String toString() {
         return "Turtle{" + "currentDirection=" + direction.toString() + ", currentCell=" + currentCell + '}';
