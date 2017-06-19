@@ -17,9 +17,9 @@ class ForwardCommand extends Command {
     }
 
     @Override
-    public Turtle execute(Grid grid,Position position,Direction direction) {
+    public TurtleOrientation execute(Grid grid,Position position,Direction direction) {
     Position updatedPosition=position.newPositionForChangeInStep(direction.getStepXCoordinate(),direction.getStepYCoordinate());
-    return position.hasOutsideBounds(updatedPosition)? new Turtle(direction,grid.getCellForPosition(updatedPosition)):null;
+    return position.hasOutsideBounds(updatedPosition)? new TurtleOrientation(direction,grid.getCellForPosition(updatedPosition)):null;
     }
 
    

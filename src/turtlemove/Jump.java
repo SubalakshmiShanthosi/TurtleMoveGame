@@ -12,14 +12,22 @@ package turtlemove;
 class Jump extends Command {
 
     public Jump() {
-    
     }
 
     @Override
-    public Turtle execute(Grid aGrid,Position position,Direction direction) {
-    Position updatedPosition=position.newPositionForChangeInStep(direction.getStepXCoordinate()*2,direction.getStepYCoordinate()*2);
-    return position.hasOutsideBounds(updatedPosition)? new Turtle(direction,aGrid.getCellForPosition(updatedPosition)):null;
+    public TurtleOrientation execute(Grid aGrid, Position position, Direction direction) {
+        Position updatedPosition = position.newPositionForChangeInStep(direction.getStepXCoordinate() * 2, direction.getStepYCoordinate() * 2);
+        TurtleOrientation aOrientation = position.hasOutsideBounds(updatedPosition) ? new TurtleOrientation(direction, aGrid.getCellForPosition(updatedPosition)) : null;
+        if (!aOrientation.getCurrentCell().isIsObstacle()) {
+            return aOrientation;
+        } else {
+            TurtleOrientation aJumpOverObstacle;
+            System.out.println("Hit obstacle at" + aOrientation.getCurrentCell().toString() + "Jump over a obstacle");
+            while ((aJumpOverObstacle = CommandFactory.commandForInput("F").execute(aGrid, updatedPosition, direction)) != null) {
+                return !aJumpOverObstacle.getCurrentCell().isIsObstacle() ? aJumpOverObstacle : null;
+
+            }
+        }
+        return null;
     }
-     
-    
 }

@@ -1,16 +1,16 @@
 
 package turtlemove;
 
-public class Turtle {
+public class TurtleOrientation {
    Direction direction;
    Cell currentCell;
    
-  public Turtle()
+  public TurtleOrientation()
    {
        this.direction=Direction.N;
        this.currentCell=new Cell(1,1,false);
    }
-   public Turtle(Direction d, Cell currentCell)
+   public TurtleOrientation(Direction d, Cell currentCell)
    {
        this.currentCell=currentCell;
        this.direction=d;
@@ -24,15 +24,17 @@ public class Turtle {
         return currentCell;
     }
    
-    public Turtle move(Grid grid,Turtle turtle,String aInput) throws NullPointerException
+    public TurtleOrientation move(Grid grid,TurtleOrientation turtle,String aInput)
     {
-     Turtle turtleOrientation=CommandFactory.commandForInput(aInput).execute(grid,turtle.getCurrentCell().getPosition(),turtle.getCurrentDirection());
-     if(turtleOrientation.getCurrentCell().isIsObstacle())
+     TurtleOrientation turtleOrientation=CommandFactory.commandForInput(aInput).execute(grid,turtle.getCurrentCell().getPosition(),turtle.getCurrentDirection());
+     if(turtleOrientation!=null && turtleOrientation.getCurrentCell().isIsObstacle())
      {
          System.out.println("Hit obstacle at "+turtleOrientation.getCurrentCell().toString()+"Picking next command");     
          return turtle;
      }
+     else
      return turtleOrientation;
+    
     }
     
     

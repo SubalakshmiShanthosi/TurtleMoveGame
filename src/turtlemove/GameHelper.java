@@ -12,11 +12,11 @@ import java.util.Scanner;
  */
 public class GameHelper {
 
-public  Grid grid;
-public  Turtle turtle;
+private  Grid grid;
+private  TurtleOrientation turtle;
 
 
- public GameHelper(Grid grid,Turtle turtle)
+ public GameHelper(Grid grid,TurtleOrientation turtle)
  {
      this.grid=grid;
      this.turtle=turtle;
@@ -25,7 +25,7 @@ public  Turtle turtle;
         return grid;
     }
 
-    public Turtle getTurtle() {
+    public TurtleOrientation getTurtle() {
         return turtle;
     }
 
@@ -34,8 +34,11 @@ public void startPlaying(final String inputCommand) throws  NullPointerException
     char[] inputCommandString=inputCommand.toCharArray();
     for(Character c:inputCommandString)
     {
-                
-          this.turtle=this.turtle.move(getGrid(),getTurtle(),c.toString());
+         TurtleOrientation aNewOrientation=getTurtle().move(getGrid(),getTurtle(),c.toString());       
+         if(aNewOrientation!=null)
+             this.turtle=aNewOrientation;
+         else
+             System.out.println("Illegal move!");
     }
     
     finishGame();

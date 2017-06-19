@@ -16,8 +16,8 @@ class RightCommand extends Command {
     }
 
     @Override
-    public Turtle execute(Grid grid,Position position,Direction direction) {
-        return new Turtle(direction.right(),grid.getCellForPosition(position));
+    public TurtleOrientation execute(Grid grid,Position position,Direction direction) {
+        return new TurtleOrientation(direction.right(),grid.getCellForPosition(position));
         
     }
         

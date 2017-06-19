@@ -20,7 +20,7 @@ import turtlemove.GameHelper;
 import turtlemove.Grid;
 import turtlemove.IOUtils;
 import turtlemove.Position;
-import turtlemove.Turtle;
+import turtlemove.TurtleOrientation;
 
 /**
  *
@@ -49,34 +49,34 @@ public class TurtleApplicationTest {
     
      @Test
      public void checkIllegalMove() throws FileNotFoundException, IOException {
-       Turtle turtle=new Turtle();
+       TurtleOrientation turtle=new TurtleOrientation();
        Grid grid=IOUtils.initializeGrid(new File("GridInitiation.txt"));     
        final String command="RFRFLFF";
        GameHelper game=new GameHelper(grid,turtle);
        game.startPlaying(command);
-       Assert.assertEquals(turtle.getCurrentCell().getPosition(),new Position(4,1));
-       Assert.assertEquals(turtle.getCurrentDirection(),Direction.E);
+       Assert.assertEquals(game.getTurtle().getCurrentCell().getPosition(),new Position(4,1));
+       Assert.assertEquals(game.getTurtle().getCurrentDirection(),Direction.E);
      }
      
      @Test
      public void checkObstacleHit() throws FileNotFoundException, IOException {
-       Turtle turtle=new Turtle();
+       TurtleOrientation turtle=new TurtleOrientation();
        Grid grid=IOUtils.initializeGrid(new File("GridInitiation.txt"));     
        final String command="FFRFF";
        GameHelper game=new GameHelper(grid,turtle);
        game.startPlaying(command);
-       Assert.assertEquals(turtle.getCurrentCell().getPosition(),new Position(2,3));
-       Assert.assertEquals(turtle.getCurrentDirection(),Direction.E);
+       Assert.assertEquals(game.getTurtle().getCurrentCell().getPosition(),new Position(2,3));
+       Assert.assertEquals(game.getTurtle().getCurrentDirection(),Direction.E);
      }
      @Test
      public void checkJumpOverHit()throws FileNotFoundException,IOException{
-     Turtle turtle=new Turtle();
+     TurtleOrientation turtle=new TurtleOrientation();
        Grid grid=IOUtils.initializeGrid(new File("GridInitiation.txt"));     
        final String command="JRJ";
        GameHelper game=new GameHelper(grid,turtle);
        game.startPlaying(command);
-       Assert.assertEquals(turtle.getCurrentCell().getPosition(),new Position(2,3));
-       Assert.assertEquals(turtle.getCurrentDirection(),Direction.E);
+       Assert.assertEquals(game.getTurtle().getCurrentCell().getPosition(),new Position(4,3));
+       Assert.assertEquals(game.getTurtle().getCurrentDirection(),Direction.E);
     
      }
 }

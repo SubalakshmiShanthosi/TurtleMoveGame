@@ -15,7 +15,7 @@ public class TurtleApplication {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         
         Grid grid=IOUtils.initializeGrid(new File("GridInitiation.txt"));
-        Turtle turtle=new Turtle();
+        TurtleOrientation turtle=new TurtleOrientation();
         GameHelper turtleCommand=new GameHelper(grid,turtle);
         Scanner scanner =new Scanner(System.in);
         turtleCommand.startPlaying(scanner.nextLine().toUpperCase());

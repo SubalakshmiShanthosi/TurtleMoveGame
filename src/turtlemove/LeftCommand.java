@@ -15,8 +15,8 @@ public class LeftCommand extends Command {
     }
 
     @Override
-    public Turtle execute(Grid grid,Position position,Direction direction) {
-       return new Turtle(direction.left(),grid.getCellForPosition(position));
+    public TurtleOrientation execute(Grid grid,Position position,Direction direction) {
+       return new TurtleOrientation(direction.left(),grid.getCellForPosition(position));
     }
 
     
