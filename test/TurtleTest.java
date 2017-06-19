@@ -59,7 +59,7 @@ public class TurtleTest {
      {
        Turtle turtle=new Turtle();
        Grid grid=IOUtils.initializeGrid(new File("GridInitiation.txt"));
-       turtle.move(grid, turtle, Command.F);
+       turtle.move(grid, turtle,"F");
        Assert.assertEquals(turtle.toString(),new Turtle(Direction.N,new Cell(1,2,false)).toString());
      }
      @Test
@@ -67,9 +67,9 @@ public class TurtleTest {
      {
        Turtle turtle=new Turtle();
        Grid grid=IOUtils.initializeGrid(new File("GridInitiation.txt"));
-       turtle.move(grid, turtle, Command.L);
+       turtle.move(grid, turtle,"L");
        Assert.assertEquals(turtle.toString(),new Turtle(Direction.W,new Cell(1,1,false)).toString());
-       turtle.move(grid, turtle, Command.R);
+       turtle.move(grid, turtle,"R");
        Assert.assertEquals(turtle.toString(),new Turtle(Direction.N,new Cell(1,1,false)).toString());
      }
      

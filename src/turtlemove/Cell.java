@@ -14,8 +14,7 @@ public boolean isObstacle;
         return position;
     }
 
-
-
+    
     public boolean isIsObstacle() {
         return isObstacle;
     }

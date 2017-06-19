@@ -24,37 +24,17 @@ public class Turtle {
         return currentCell;
     }
    
-    public void move(Grid grid,Turtle turtle,Command command)
+    public Turtle move(Grid grid,Turtle turtle,String aInput) throws NullPointerException
     {
-      if(command.compareTo(Command.F)==0)
-      {
-         checkAndUpdateMove(grid,turtle,turtle.getCurrentDirection());
-      }
-      if(command.compareTo(Command.L)==0)
-          turtle.direction=turtle.getCurrentDirection().left();
-      if(command.compareTo(Command.R)==0)
-          turtle.direction=turtle.getCurrentDirection().right();
+     Turtle turtleOrientation=CommandFactory.commandForInput(aInput).execute(grid,turtle.getCurrentCell().getPosition(),turtle.getCurrentDirection());
+     if(turtleOrientation.getCurrentCell().isIsObstacle())
+     {
+         System.out.println("Hit obstacle at "+turtleOrientation.getCurrentCell().toString()+"Picking next command");     
+         return turtle;
+     }
+     return turtleOrientation;
     }
     
-    private void checkAndUpdateMove(Grid grid,Turtle turtle,Direction currentDirection)
-    {   
-        Position position=turtle.getCurrentCell().getPosition().newPositionForChangeInStep(currentDirection.getStepXCoordinate(),currentDirection.getStepYCoordinate());
-        if(turtle.getCurrentCell().getPosition().hasOutsideBounds(position))
-        {
-            Cell cell=grid.getCellForPosition(position);     
-        if(!cell.isIsObstacle() && cell!=null)
-             {
-                turtle.currentCell=grid.getCellForPosition(position);
-             }
-        else if(cell.isIsObstacle() && cell!=null)
-       {
-           System.out.println("Hit obstacle at"+cell.toString()+"No movement possible");
-       }
-             
-   }
-        else
-            System.out.println("IIlegal move ");
-    }
     
     @Override
     public String toString() {

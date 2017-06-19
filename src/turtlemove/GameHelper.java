@@ -34,9 +34,8 @@ public void startPlaying(final String inputCommand) throws  NullPointerException
     char[] inputCommandString=inputCommand.toCharArray();
     for(Character c:inputCommandString)
     {
-      if(Command.fromString(c.toString())!=null)
-          
-          this.turtle.move(getGrid(),getTurtle(),Command.fromString(c.toString()));
+                
+          this.turtle=this.turtle.move(getGrid(),getTurtle(),c.toString());
     }
     
     finishGame();

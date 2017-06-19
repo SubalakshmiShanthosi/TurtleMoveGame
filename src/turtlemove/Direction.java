@@ -70,13 +70,27 @@ public enum Direction {
 
     public abstract Direction right();
     public abstract Direction left();
-
+    
+    
+    
     public Integer stepSizeForXAxis() {
         return this.StepXCoordinate;
     }
 
     public Integer stepSizeForYAxis() {
         return this.StepYCoordinate;
+    }
+
+    public void setStepXCoordinate(Integer StepXCoordinate) {
+        this.StepXCoordinate = StepXCoordinate;
+    }
+
+    public void setStepYCoordinate(Integer StepYCoordinate) {
+        this.StepYCoordinate = StepYCoordinate;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
     @Override

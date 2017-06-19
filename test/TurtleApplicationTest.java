@@ -68,5 +68,15 @@ public class TurtleApplicationTest {
        Assert.assertEquals(turtle.getCurrentCell().getPosition(),new Position(2,3));
        Assert.assertEquals(turtle.getCurrentDirection(),Direction.E);
      }
-     
+     @Test
+     public void checkJumpOverHit()throws FileNotFoundException,IOException{
+     Turtle turtle=new Turtle();
+       Grid grid=IOUtils.initializeGrid(new File("GridInitiation.txt"));     
+       final String command="JRJ";
+       GameHelper game=new GameHelper(grid,turtle);
+       game.startPlaying(command);
+       Assert.assertEquals(turtle.getCurrentCell().getPosition(),new Position(2,3));
+       Assert.assertEquals(turtle.getCurrentDirection(),Direction.E);
+    
+     }
 }
